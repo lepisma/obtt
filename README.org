@@ -1,0 +1,3 @@
+#+TITLE: obtt
+
+Org-Babel Tangle Templates. See the [[https://lepisma.github.io/2018/08/26/tangle-templates.html][blog post]] for more info.
