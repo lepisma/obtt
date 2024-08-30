@@ -111,7 +111,9 @@ is true, also tangle it automatically."
                               :buffer "*helm obtt*"
                               :prompt "Select template: ")))
           (obtt-insert-template template)
-          (when arg (obtt-tangle)))))))
+          (when arg
+            (obtt-tangle)
+            (kill-buffer)))))))
 
 (provide 'obtt)
 
