@@ -3,7 +3,7 @@
 ;; Copyright (c) 2018-2024 Abhinav Tushar
 
 ;; Author: Abhinav Tushar <lepisma@fastmail.com>
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Package-Requires: ((emacs "25") (yasnippet "0.13.0") (helm "3.0"))
 ;; URL: https://github.com/lepisma/obtt
 
