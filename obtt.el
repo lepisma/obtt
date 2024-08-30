@@ -1,6 +1,6 @@
 ;;; obtt.el --- Org babel tangle templates -*- lexical-binding: t; -*-
 
-;; Copyright (c) 2018 Abhinav Tushar
+;; Copyright (c) 2018-2024 Abhinav Tushar
 
 ;; Author: Abhinav Tushar <lepisma@fastmail.com>
 ;; Version: 0.0.2
@@ -97,17 +97,19 @@
     (yas-expand-snippet (obtt-read-template template))))
 
 ;;;###autoload
-(defun obtt-new (directory)
-  (interactive "DStarting directory: ")
+(defun obtt-new (directory &optional arg)
+  "Generate a new seed file by asking for template. If prefix `arg'
+is true, also tangle it automatically."
+  (interactive "DStarting directory: \nP")
   (let ((seed-file (concat directory obtt-seed-name)))
     (if (file-exists-p seed-file)
         (message "Seed file already exists")
       (with-current-buffer (find-file (concat directory obtt-seed-name))
-        (helm :sources (helm-build-sync-source "templates"
-                         :candidates (obtt-available-snippets)
-                         :action '(("Insert template" . obtt-insert-template)))
-              :buffer "*helm obtt*"
-              :prompt "Select template: ")))))
+        (let ((template (helm :sources (helm-build-sync-source "templates" :candidates (obtt-available-snippets))
+                              :buffer "*helm obtt*"
+                              :prompt "Select template: ")))
+          (obtt-insert-template template)
+          (when arg (obtt-tangle)))))))
 
 (provide 'obtt)
 
