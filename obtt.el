@@ -38,10 +38,12 @@
 
 
 (defcustom obtt-templates-dir nil
-  "Template directory")
+  "Template directory"
+  :type 'directory)
 
 (defcustom obtt-seed-name ".obtt"
-  "Name for the seed file")
+  "Name for the seed file"
+  :type 'string)
 
 (defun obtt-parse-args (args-string)
   (split-string (string-trim args-string)))
